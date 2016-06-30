@@ -40,7 +40,7 @@ describe('index', () => {
 
     it('should return a function', function () {
       const doubler = createMultiplier(2)
-      expect(typeof doubler).toEqual('function')
+      expect(doubler).toBeA('function')
     })
 
     it('should multiply a given value using the created multiplier', function () {
@@ -52,13 +52,13 @@ describe('index', () => {
   describe('Multiplier functions created with `createMultiplierBonus`', function () {
     it('should have a doubler function', function () {
       expect(doubler).toExist()
-      expect(typeof doubler).toEqual('function')
+      expect(doubler).toBeA('function')
       expect(doubler(5)).toEqual(10)
     })
 
     it('should have a tripler function', function () {
       expect(tripler).toExist()
-      expect(typeof tripler).toEqual('function')
+      expect(tripler).toBeA('function')
       expect(tripler(5)).toEqual(15)
     })
   })
@@ -76,7 +76,7 @@ describe('index', () => {
       }
 
       expect(doublerWithBind).toExist()
-      expect(typeof doublerWithBind).toEqual('function')
+      expect(doublerWithBind).toBeA('function')
     })
   })
 })
