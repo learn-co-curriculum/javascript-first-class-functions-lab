@@ -50,7 +50,9 @@ To make the nyan cat happy and pass all tests, do the following:
 
 1. Create a `multiplier()` function that takes two arguments and multiplies them together.
 2. Create a `doublerWithBind` variable that partially applies the `multiplier()` function by passing in `2` as its first
-argument. No need to create a `triplerWithBind` variable, you probably get the gist by now!
+argument.
+3. Create a `triplerWithBind` variable that partially applies the `multiplier()` function by passing in `3` as its first
+argument.
 
 ## Resources
 
