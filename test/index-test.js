@@ -24,10 +24,10 @@ describe('index', () => {
       const spy = createSpy()
       countdown(spy)
 
-      expect(spy.calls.length).toEqual(0)
+      expect(spy).toNotHaveBeenCalled()
 
       setTimeout(function () {
-        expect(spy.calls.length).toEqual(1)
+        expect(spy).toHaveBeenCalled()
         done();
       }, 2001)
     })
