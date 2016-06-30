@@ -77,6 +77,9 @@ describe('index', () => {
 
       expect(doublerWithBind).toExist()
       expect(doublerWithBind).toBeA('function')
+
+      expect(triplerWithBind).toExist()
+      expect(triplerWithBind).toBeA('function')
     })
   })
 })
