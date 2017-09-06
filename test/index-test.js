@@ -1,82 +1,86 @@
-describe('index', function() {
-  describe('`countdown` function', function () {
+const expect = chai.expect;
+
+describe("index", function() {
+  describe("`countdown` function", function() {
     before(function() {
       let useFakeTimers = null;
 
-      if (typeof sinon === 'undefined') {
-        useFakeTimers = require('sinon').useFakeTimers;
+      if (typeof sinon === "undefined") {
+        useFakeTimers = require("sinon").useFakeTimers;
       } else {
         useFakeTimers = sinon.useFakeTimers;
       }
 
       this.clock = useFakeTimers();
-    })
+    });
 
     after(function() {
       this.clock.restore();
     });
 
-    it('should exist', function () {
-      expect(countdown).toExist()
+    it("should exist", function() {
+      expect(countdown).to.exist;
     });
 
-    it('should have call the given callback function after two seconds', function() {
-      const spy = expect.createSpy();
+    it("should have called the given callback function after two seconds", function() {
+      const spy = chai.spy();
       countdown(spy);
 
-      expect(spy).toNotHaveBeenCalled();
+      expect(spy).should.have.not.been.called;
 
       this.clock.tick(2001);
 
-      expect(spy).toHaveBeenCalled();
+      expect(spy).should.have.been.called;
     });
   });
 
-  describe('`createMultiplier` function', function () {
-    it('should exist', function () {
-      expect(createMultiplier).toExist();
+  describe("`createMultiplier` function", function() {
+    it("should exist", function() {
+      expect(createMultiplier).to.exist;
     });
 
-    it('should return a function', function () {
+    it("should return a function", function() {
       const doubler = createMultiplier(2);
-      expect(doubler).toBeA('function');
+      expect(doubler).to.be.a("function");
     });
 
-    it('should multiply a given value using the created multiplier', function () {
+    it("should multiply a given value using the created multiplier", function() {
       const doubler = createMultiplier(2);
-      expect(doubler(5)).toEqual(10);
+      expect(doubler(5)).to.eq(10);
     });
   });
 
-  describe('Multiplier functions created with `createMultiplierBonus`', function () {
-    it('should have a doubler function', function () {
-      expect(doubler).toExist();
-      expect(doubler).toBeA('function');
-      expect(doubler(5)).toEqual(10);
+  describe("Multiplier functions created with `createMultiplierBonus`", function() {
+    it("should have a doubler function", function() {
+      expect(doubler).to.exist;
+      expect(doubler).to.be.a("function");
+      expect(doubler(5)).to.eq(10);
     });
 
-    it('should have a tripler function', function () {
-      expect(tripler).toExist();
-      expect(tripler).toBeA('function');
-      expect(tripler(5)).toEqual(15);
+    it("should have a tripler function", function() {
+      expect(tripler).to.exist;
+      expect(tripler).to.be.a("function");
+      expect(tripler(5)).to.eq(15);
     });
   });
 
-  describe('`multiplier()` with partial application', function () {
-    it('should exist', function () {
-      expect(multiplier).toExist();
+  describe("`multiplier()` with partial application", function() {
+    it("should exist", function() {
+      expect(multiplier).to.exist;
     });
 
-    it('should have a doubler function created using `.bind()`', function () {
-      if (typeof server !== 'undefined' && server && !hasUsedBind) {
-        throw new Error("No cheating! Make sure to use `.bind()` for this solution!");
+    it("should have a doubler function created using `.bind()`", function() {
+      if (typeof server !== "undefined" && server && !hasUsedBind) {
+        throw new Error(
+          "No cheating! Make sure to use `.bind()` for this solution!"
+        );
       }
 
-      expect(doublerWithBind).toExist();
-      expect(doublerWithBind).toBeA('function');
+      expect(doublerWithBind).to.exist;
+      expect(doublerWithBind).to.be.a("function");
 
-      expect(triplerWithBind).toExist();
-      expect(triplerWithBind).toBeA('function');
+      expect(triplerWithBind).to.exist;
+      expect(triplerWithBind).to.be.a("function");
     });
   });
 });
