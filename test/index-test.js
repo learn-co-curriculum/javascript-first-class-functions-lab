@@ -11,7 +11,7 @@ describe("index", function() {
         useFakeTimers = sinon.useFakeTimers;
       }
 
-      this.clock = useFakeTimers();
+      this.clock = sinon.useFakeTimers();
     });
 
     after(function() {
@@ -23,14 +23,18 @@ describe("index", function() {
     });
 
     it("should have called the given callback function after two seconds", function() {
-      const spy = chai.spy();
-      countdown(spy);
+      const testObj = {
+        callback: function() {}
+      };
 
-      expect(spy).should.have.not.been.called;
+      const spy = sinon.spy(testObj, "callback");
+      countdown(testObj.callback);
+
+      expect(spy.called).to.eq(false);
 
       this.clock.tick(2001);
 
-      expect(spy).should.have.been.called;
+      expect(spy.called).to.eq(true);
     });
   });
 
